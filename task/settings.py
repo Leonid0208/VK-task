@@ -27,7 +27,7 @@ SECRET_KEY = '02ti%uw2ikr)s6g5s=z6x7oa3i%lea7tbo(do2=jgflya1jp=t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['vk-friends-task.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
