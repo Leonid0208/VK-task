@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VK - Friends</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+<!--    <nav class="navbar navbar-light bg-light">-->
+<!--      <a class="navbar-brand" href="#">-->
+<!--        <img src="https://img01.rl0.ru/afisha/1500x-/daily.afisha.ru/uploads/images/9/bf/9bf01a7a8a70f6d8ffbfc8b908a4cbfe.jpg" width="30" height="30" alt="" loading="lazy">-->
+<!--        <p>Войти</p>-->
+<!--      </a>-->
+<!--    </nav>-->
+    {% if user.is_authenticated %}
+        <nav class="navbar navbar-light bg-light">
+          <a class="navbar-brand" href="https://vk.com/id{{ user.username }}">
+            <img style="float: left; margin-right: 25px;" src="{{ user.profile.photo }}" width="50" height="50" class="d-inline-block align-top" alt="" loading="lazy">
+            <p style="clear: right;">{{ user.first_name }}<br>{{ user.last_name }}</p>
+          </a>
+            <a href="{% url 'logout_url' %}"><button type="button" class="btn btn-secondary">Выйти</button></a>
+        </nav>
+
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-8 offset-md-2">
+                    <ul class="list-unstyled">
+                      {% for friend in friends_list %}
+                        <a class="friend" href="https://vk.com/{{ friend.domain }}" style="color: black">
+                          <li class="media mt-5">
+                            <img src="{{ friend.photo  }}" class="mr-3">
+                            <div class="media-body">
+                              <h3 class="mt-0 mb-1">{{ friend.first_name }}  {{ friend.last_name}}</h3>
+                            </div>
+                          </li>
+                        </a>
+                      {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="not_auth">
+            <a href="https://oauth.vk.com/authorize?client_id=7549290&display=page&redirect_uri=https://vk-friends-task.herokuapp.com/&scope=friends&response_type=code&v=5.120"><img
+                    src="https://img01.rl0.ru/afisha/1500x-/daily.afisha.ru/uploads/images/9/bf/9bf01a7a8a70f6d8ffbfc8b908a4cbfe.jpg" alt="">
+            <h1>Войти</h1></a>
+        </div>
+    {% endif %}
+    {{ access_token }}
+</body>
+</html>
