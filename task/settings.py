@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '02ti%uw2ikr)s6g5s=z6x7oa3i%lea7tbo(do2=jgflya1jp=t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['vk-friends-task.herokuapp.com']
 
@@ -134,7 +134,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 PROJECT_ROOT = BASE_DIR
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 LOGIN_REDIRECT_URL = '/'
 
