@@ -1,8 +1,8 @@
 ### Django ###
+*.sqlite3
 *.log
 *.pot
 *.pyc
-db.*
 __pycache__/
 local_settings.py
 venv/
