@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.backends import ModelBackend
 
 
-class MyBackend(ModelBackend):
+class MyAuthentication(ModelBackend):
 
     def authenticate(self, username=None):
         try:

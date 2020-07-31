@@ -28,7 +28,7 @@ SECRET_KEY = '02ti%uw2ikr)s6g5s=z6x7oa3i%lea7tbo(do2=jgflya1jp=t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['vk-friends-task.herokuapp.com']
+ALLOWED_HOSTS = ['vk-friends-task.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'social_django',
     'app',
 
 ]
@@ -60,9 +59,7 @@ ROOT_URLCONF = 'task.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(BASE_DIR, 'templates')
-        ],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -70,7 +67,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # 'social_django.context_processors.backends',
             ],
         },
     },
@@ -91,9 +87,8 @@ DATABASES = {
 }
 
 AUTHENTICATION_BACKENDS = (
-    # 'social_core.backends.vk.VKOAuth2',          # бекенд авторизации через ВКонтакте
     'django.contrib.auth.backends.ModelBackend', # бекенд классической аутентификации, чтобы работала авторизация через обычный логин и пароль
-    'app.utils.MyBackend',
+    'app.utils.MyAuthentication',
 )
 
 
